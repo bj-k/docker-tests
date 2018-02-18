@@ -1,0 +1,16 @@
+FROM java:8
+
+ENV H2_BASE /opt/h2
+ENV H2_LOG /opt/h2/h2.log
+ENV H2_SQL /opt/h2/sql
+ENV H2_DATA_DIR /opt/h2/data
+ENV H2_SCRIPTS_DIR /opt/h2/scripts
+ENV H2_CONTAINER_CREATED /opt/h2/created
+
+COPY . $H2_BASE/
+
+
+EXPOSE 81 1521
+
+WORKDIR $H2_BASE
+CMD $H2_SCRIPTS_DIR/runH2.sh
